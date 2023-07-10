@@ -1,0 +1,90 @@
+<script>
+    
+    function getComputerChoice(){
+        let randNumber = Math.floor((Math.random() * 3) + 1);
+        if (randNumber === 1){
+            var computerChoice = "Rock";
+            
+        } else if (randNumber === 2){
+            var computerChoice = "Paper";
+            
+        } else if(randNumber === 3) {
+            var computerChoice = "Scissors";
+            
+        }
+        return computerChoice;
+       
+    }
+    function getPlayerChoice(){
+        let playerSelection = prompt("Make your choice");
+        return playerSelection;
+    }
+
+    
+    //  compare two of the selections with if statement
+    // they must be non-case sensetive so use .lower
+    // if rock-rock then restart if rock - papper player2 wins etc.
+    function playRound(playerSelection, computerSelection){
+        getPlayerChoice();
+        getComputerChoice();
+        let player = playerSelection.toLowerCase();
+        let computer = computerSelection.toLowerCase();
+        if(player === "rock" && computer === "paper") {
+            computerScore++;
+            console.log("Computer Won!");
+
+        }else if(player === "rock" && computer === "scissors"){
+            console.log("Player Won!");
+            playerScore++;
+        }else if(player === "paper" && computer === "rock"){
+            console.log("Computer Won!");
+            computerScore++;
+        }else if(player === "paper" && computer === "scissors"){
+            console.log("Computer Won!");
+            computerScore++;
+        }else if(player === "rock" && computer === "paper"){
+            console.log("Player Won!");
+            playerScore++;
+        }else if(player === "scissors" && computer === "paper"){
+            console.log("Player Won!");
+            playerScore++;
+        }else if(player === "scissors" && computer === "rock"){
+            console.log("Computer Won!");
+            computerScore++;
+        }else{
+            
+            console.log("No Winner , Restart!");
+            
+        }
+
+    
+    }
+    
+    const computerSelection = getComputerChoice();
+    const playerSelection = getPlayerChoice();
+    let computerScore = 0;
+    let playerScore = 0;
+    console.log(playRound(playerSelection, computerSelection));
+
+    function game(){
+        playRound(playerSelection, computerSelection);
+        console.log(computerScore, playerScore);
+        playRound(playerSelection, computerSelection);
+        console.log(computerScore, playerScore);
+        playRound(playerSelection, computerSelection);
+        console.log(computerScore, playerScore);
+        playRound(playerSelection, computerSelection);
+        console.log(computerScore, playerScore);
+        playRound(playerSelection, computerSelection);
+        console.log(computerScore, playerScore);
+        
+        if(computerScore > playerScore){
+            console.log("Computer has won the match.");
+
+        }else if(playerScore > computerScore){
+            console.log("Player has won the match.");
+        }
+
+    }
+    game();
+</script>
